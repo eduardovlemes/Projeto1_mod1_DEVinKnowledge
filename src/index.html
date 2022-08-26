@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DEVinKnowledge</title>
-    <script src="./index.js"></script>
+    <script src="./index.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="../public/favicon.png" type="png">
   </head>
-  <body>
+  <body onload="loadTips()">
     <main>
         <form id="container-form">
             <img src="./assets/logo0.png" alt="logo">
@@ -37,7 +37,7 @@
 
             <div id="button-form">
                 <button id="button-clean">Limpar</button>
-                <button type="submit" id="button-save" value="Salvar">Salvar</button>
+                <button type="submit" id="button-save" onclick="saveTips(event)">Salvar</button>
             </div>
         </form>
 
