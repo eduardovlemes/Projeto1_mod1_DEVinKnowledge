@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="../public/favicon.png" type="png">
   </head>
-  <body onload="loadTips()">
+  <body onload="loadTips(); showTips()">
     <main>
         <form id="container-form">
             <img src="./assets/logo0.png" alt="logo">
@@ -69,8 +69,8 @@
                 <button id="button-search"></button>
                 <button id="button-delete"></button>
             </div>
-            <div>
-                <div>
+            <div id="show-tips">
+                <!-- <div>
                     <h3></h3>
                     <p></p>
                     <p></p>
@@ -80,10 +80,8 @@
                     <button></button>
                     <button></button>
                     <button></button>
-                </div>
-            </div>
-
-            
+                </div> -->
+            </div>            
         </div>
         <div class="img-background"></div>
     </main>
