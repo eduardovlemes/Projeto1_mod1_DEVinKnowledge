@@ -81,7 +81,6 @@ function saveTips(event) {
 
 function showTips() {
   tips = JSON.parse(localStorage.getItem("Tips"));
-  console.log(tips);
 
   const showTips = document.getElementById("show-tips");
   showTips.innerHTML = "";
@@ -95,10 +94,24 @@ function showTips() {
         </div>
         <div id="button-new-tips">
             <button id="button-new-tip-edit"></button>
-            <button id="button-new-tip-delete"></button>
-            <button id="button-new-tip-video"></button>
+            <button id="button-new-tip-delete" onclick="buttonDeleteTip(${index})></button>
+            <a href="${tip.video}" target="_blank" id="button-new-tip-video"></a>
         </div>`;
 
     showTips.innerHTML += newTip;
   });
+}
+
+function buttonDeleteTip (){
+    tips = JSON.parse(localStorage.getItem("Tips"))
+
+    tips.forEach((tip, indexItem) => {
+        if (indexItem == index) {
+            tip.splice (index, 1)
+        }
+    })
+
+    localStorage.setItem("Tips", JSON.stringify(tips))
+
+    showTips()
 }
