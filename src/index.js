@@ -71,3 +71,6 @@ function saveTips (event){
     localStorage.setItem("Tips", JSON.stringify(tips))
 }
 
+function showTips (){
+    tips = JSON.parse(localStorage.getItem("Tips"))
+}
