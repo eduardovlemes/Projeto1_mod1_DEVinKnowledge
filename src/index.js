@@ -63,6 +63,8 @@ function saveTips(event) {
     );
   }
 
+
+
   const videoInput = document.getElementById("input-video").value;
   /* const validatesVideo = new RegExp("^((http(s?)://(www.)?[a-z]+.com/)|(magnet:?xt=urn:btih:))")
     if (validatesVideo.test(videoInput)) {
@@ -109,6 +111,12 @@ function showTips() {
 
     showTips.innerHTML += newTip;
   });
+}
+
+function cleanForm(event) {
+  event.preventDefault()
+  const form = document.getElementById("container-form") 
+  form.reset()
 }
 
 function buttonDeleteTip (){
