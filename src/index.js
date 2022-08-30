@@ -1,4 +1,3 @@
-// Só para que as dicas não começem vazias.
 const initialValues = [
   {
     title: "Grid vs Flex-Box",
@@ -17,7 +16,7 @@ const initialValues = [
     video: "https://www.youtube.com/watch?v=H5L-CfmklKc",
   },
   {
-    title: "5 Habitos Que Todo DEV Deveria Ter.",
+    title: "5 Habitos Que Todo DEV Deveria Ter",
     language: "Profissional",
     category: "SoftSkill",
     description:
@@ -63,8 +62,6 @@ function saveTips(event) {
     );
   }
 
-
-
   const videoInput = document.getElementById("input-video").value;
   /* const validatesVideo = new RegExp("^((http(s?)://(www.)?[a-z]+.com/)|(magnet:?xt=urn:btih:))")
     if (validatesVideo.test(videoInput)) {
@@ -94,7 +91,7 @@ function showTips() {
 
   tips.forEach((tip, index) => {
     const newTip = `
-        <div id="new-tip">
+        <div class="new-tip">
             <div id="content-tip">
             <h3>Título: ${tip.title}</h3>
                 <p><strong>Linguagem|Skill:</strong> ${tip.language}</p>
@@ -102,9 +99,9 @@ function showTips() {
                 <p><strong>Descrição:</strong> ${tip.description}</p>
             </div>
             <div id="button-new-tips">
-                <button id="button-new-tip-edit"></button>
-                <button id="button-new-tip-delete" onclick="buttonDeleteTip(${index})></button>
-                <a href="${tip.video}" target="_blank" id="button-new-tip-video"></a>
+                <button id="button-new-tip-edit">Edit</button>
+                <button id="button-new-tip-delete">Delete</button>
+                <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
             </div>        
         </div>        
         `;
