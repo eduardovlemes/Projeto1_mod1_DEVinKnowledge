@@ -80,7 +80,7 @@ function saveTips(event) {
 
   tips.push(dataFromInputs);
 
-  loadTips()
+  localStorage.setItem("Tips", JSON.stringify(tips))
 }
 
 function showTips() {
@@ -100,7 +100,7 @@ function showTips() {
             </div>
             <div id="button-new-tips">
                 <button id="button-new-tip-edit">Edit</button>
-                <button id="button-new-tip-delete">Delete</button>
+                <button id="button-new-tip-delete" onclick="buttonDeleteTip()">Delete</button>
                 <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
             </div>        
         </div>        
@@ -116,15 +116,14 @@ function cleanForm(event) {
   form.reset()
 }
 
-function buttonDeleteTip (){
+function buttonDeleteTip (index){
     const tips = JSON.parse(localStorage.getItem("Tips"))
-
     tips.forEach((tip, indexItem) => {
         if (indexItem == index) {
             tip.splice (index, 1)
         }
     })
-    loadTips()
+    localStorage.setItem("Tips", JSON.stringify(tips))
     showTips()
 }
 
