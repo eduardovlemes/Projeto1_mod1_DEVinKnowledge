@@ -127,3 +127,40 @@ function buttonDeleteTip (){
     loadTips()
     showTips()
 }
+
+
+function stats () {
+  const statsTotal = document.getElementById("number-stats-total")
+  const statsFrontend = document.getElementById("number-stats-frontend")
+  const statsBackend = document.getElementById("number-stats-backend")
+  const statsFullstack = document.getElementById("number-stats-fullstack")
+  const statsSoftskill = document.getElementById("number-stats-softskill")
+
+  let finalStatsTotal = 0
+  let finalStatsFrontend = 0
+  let finalStatsBackend = 0
+  let finalStatsFullstack = 0
+  let finalStatsSoftskil = 0
+
+  const tips = JSON.parse(localStorage.getItem("Tips"))
+  tips.map((tip) => {
+    if (tip.category === "FrontEnd") {
+      finalStatsTotal ++
+      finalStatsFrontend ++      
+    } else if (tip.category === "BackEnd") {
+      finalStatsTotal ++
+      finalStatsBackend ++
+    } else if (tip.category === "FullStack") {
+      finalStatsTotal ++
+      finalStatsFullstack ++
+    } else if (tip.category === "SoftSkill") {
+      finalStatsTotal ++
+      finalStatsSoftskil ++
+    }
+  })
+  statsTotal.textContent = finalStatsTotal
+  statsFrontend.textContent = finalStatsFrontend
+  statsBackend.textContent = finalStatsBackend
+  statsFullstack.textContent = finalStatsFullstack
+  statsSoftskill.textContent = finalStatsSoftskil
+}

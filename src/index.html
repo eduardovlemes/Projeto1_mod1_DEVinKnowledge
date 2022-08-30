@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="../public/favicon.png" type="png">
   </head>
-  <body onload="loadTipsInitial(); showTips()">
+  <body onload="loadTipsInitial(); showTips(); stats ()">
     <main>
         <form id="container-form">
             <img src="./assets/logo0.png" alt="logo">
@@ -23,10 +23,10 @@
             <label class="label-form">Categoria</label>
             <select required name="select-category" id="select-category" class="input-form">
                 <option value="" disabled selected>Selecione uma categoria</option>
-                <option value="frontend">FrontEnd</option>
-                <option value="backend">BackEnd</option>
-                <option value="fullstack">FullStack</option>
-                <option value="softskill">SoftSkill</option>                
+                <option value="FrontEnd">FrontEnd</option>
+                <option value="BackEnd">BackEnd</option>
+                <option value="FullStack">FullStack</option>
+                <option value="SoftSkill">SoftSkill</option>                
             </select>
 
             <label class="label-form">Descrição</label>
@@ -37,7 +37,7 @@
 
             <div id="button-form">
                 <button id="button-clean" onclick="cleanForm(event)">Limpar</button>
-                <button type="submit" id="button-save" onclick="saveTips(event); showTips()">Salvar</button>
+                <button type="submit" id="button-save" onclick="saveTips(event); showTips(); stats ()">Salvar</button>
             </div>
         </form>
 
@@ -45,29 +45,29 @@
             <div id="category-statistics-all">
                 <div class="category-statistics-unity">
                     <h3 class="subtitle-statistics-unity">Total</h3>
-                    <span id="number-stats-total"></span>
+                    <span id="number-stats-total">0</span>
                 </div>
                 <div class="category-statistics-unity">
                     <h3 class="subtitle-statistics-unity">FrontEnd</h3>
-                    <span id="number-stats-total"></span>
+                    <span id="number-stats-frontend">0</span>
                 </div>
                 <div class="category-statistics-unity">
                     <h3 class="subtitle-statistics-unity">BackEnd</h3>
-                    <span id="number-stats-total"></span>
+                    <span id="number-stats-backend">0</span>
                 </div>
                 <div class="category-statistics-unity">
                     <h3 class="subtitle-statistics-unity">FullStack</h3>
-                    <span id="number-stats-total"></span>
+                    <span id="number-stats-fullstack">0</span>
                 </div>
                 <div class="category-statistics-unity">
                     <h3 class="subtitle-statistics-unity">SoftSkill</h3>
-                    <span id="number-stats-total"></span>
+                    <span id="number-stats-softskill">0</span>
                 </div>
             </div>
             <div id="search-space">
                 <input type="text" id="input-search" placeholder="Digite um título para buscar...">
-                <button id="button-search"></button>
-                <button id="button-delete"></button>
+                <button id="button-search">Procurar</button>
+                <button id="button-delete">Limpar</button>
             </div>
             <div id="show-tips">
                 <!-- <div>
