@@ -80,30 +80,34 @@ function saveTips(event) {
 }
 
 function showTips() {
-  tips = JSON.parse(localStorage.getItem("Tips"));
+  const tips = JSON.parse(localStorage.getItem("Tips"));
 
   const showTips = document.getElementById("show-tips");
   showTips.innerHTML = "";
 
   tips.forEach((tip, index) => {
-    const newTip = `<div id="new-tip">
-           <h3>${tip.title}</h3>
-            <p>${tip.language}</p>
-            <p>${tip.category}</p>
-            <p>${tip.description}</p>
-        </div>
-        <div id="button-new-tips">
-            <button id="button-new-tip-edit"></button>
-            <button id="button-new-tip-delete" onclick="buttonDeleteTip(${index})></button>
-            <a href="${tip.video}" target="_blank" id="button-new-tip-video"></a>
-        </div>`;
+    const newTip = `
+        <div id="new-tip">
+            <div id="content-tip">
+            <h3>Título: ${tip.title}</h3>
+                <p><strong>Linguagem|Skill:</strong> ${tip.language}</p>
+                <p><strong>Categoria:</strong> ${tip.category}</p>
+                <p><strong>Descrição:</strong> ${tip.description}</p>
+            </div>
+            <div id="button-new-tips">
+                <button id="button-new-tip-edit"></button>
+                <button id="button-new-tip-delete" onclick="buttonDeleteTip(${index})></button>
+                <a href="${tip.video}" target="_blank" id="button-new-tip-video"></a>
+            </div>        
+        </div>        
+        `;
 
     showTips.innerHTML += newTip;
   });
 }
 
 function buttonDeleteTip (){
-    tips = JSON.parse(localStorage.getItem("Tips"))
+    const tips = JSON.parse(localStorage.getItem("Tips"))
 
     tips.forEach((tip, indexItem) => {
         if (indexItem == index) {
