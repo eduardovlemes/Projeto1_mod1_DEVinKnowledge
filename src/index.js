@@ -193,5 +193,9 @@ function searchTip () {
   })
 }
 
+function cleanSearch (){
+  document.getElementById("input-search").value = ""
+}
+
 
 
