@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="../public/favicon.png" type="png">
   </head>
-  <body onload="loadTips(); showTips()">
+  <body onload="loadTipsInitial(); showTips()">
     <main>
         <form id="container-form">
             <img src="./assets/logo0.png" alt="logo">
@@ -37,7 +37,7 @@
 
             <div id="button-form">
                 <button id="button-clean">Limpar</button>
-                <button type="submit" id="button-save" onclick="saveTips(event)">Salvar</button>
+                <button type="submit" id="button-save" onclick="saveTips(event); showTips()">Salvar</button>
             </div>
         </form>
 

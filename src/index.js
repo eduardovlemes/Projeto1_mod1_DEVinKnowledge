@@ -9,7 +9,7 @@ const initialValues = [
     video: "https://www.youtube.com/watch?v=x-4z_u8LcGc",
   },
   {
-    title: "A arte de comunicar",
+    title: "A Arte de Comunicar",
     language: "Comunicação",
     category: "SoftSkill",
     description:
@@ -17,7 +17,7 @@ const initialValues = [
     video: "https://www.youtube.com/watch?v=H5L-CfmklKc",
   },
   {
-    title: "5 habitos que todo dev deveria ter.",
+    title: "5 Habitos Que Todo DEV Deveria Ter.",
     language: "Profissional",
     category: "SoftSkill",
     description:
@@ -26,9 +26,14 @@ const initialValues = [
   },
 ];
 
-function loadTips() {
+function loadTipsInitial() {
   localStorage.setItem("Tips", JSON.stringify(initialValues));
 }
+
+function loadTips(){
+  localStorage.setItem("Tips", JSON.stringify(tips))
+}
+
 
 function saveTips(event) {
   event.preventDefault();
@@ -76,7 +81,7 @@ function saveTips(event) {
 
   tips.push(dataFromInputs);
 
-  localStorage.setItem("Tips", JSON.stringify(tips));
+  loadTips()
 }
 
 function showTips() {
@@ -114,8 +119,6 @@ function buttonDeleteTip (){
             tip.splice (index, 1)
         }
     })
-
-    localStorage.setItem("Tips", JSON.stringify(tips))
-
+    loadTips()
     showTips()
 }
