@@ -164,3 +164,34 @@ function stats () {
   statsFullstack.textContent = finalStatsFullstack
   statsSoftskill.textContent = finalStatsSoftskil
 }
+
+function searchTip () {
+  const searchSpace = document.getElementById("input-search")
+  const searchAdjustment = searchSpace.value.toLowerCase()
+  const tips = JSON.parse(localStorage.getItem("Tips"))
+  const showTips = document.getElementById("show-tips");
+  showTips.innerHTML = "";  
+
+  tips.forEach((tip, index) => {
+    if (tips[index].title.toLowerCase().includes(searchAdjustment)) {
+      showTips.innerHTML = `
+      <div class="new-tip">
+          <div id="content-tip">
+          <h3>Título: ${tip.title}</h3>
+              <p><strong>Linguagem|Skill:</strong> ${tip.language}</p>
+              <p><strong>Categoria:</strong> ${tip.category}</p>
+              <p><strong>Descrição:</strong> ${tip.description}</p>
+          </div>
+          <div id="button-new-tips">
+              <button id="button-new-tip-edit">Edit</button>
+              <button id="button-new-tip-delete">Delete</button>
+              <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
+          </div>        
+      </div>        
+      `
+    }
+  })
+}
+
+
+
