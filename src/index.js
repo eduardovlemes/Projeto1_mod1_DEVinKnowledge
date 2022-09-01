@@ -93,9 +93,9 @@ function showTips() {
               <p><strong>Descrição:</strong> ${tip.description}</p>
             </div>
             <div id="button-new-tips">
-              <button type="button" id="button-new-tip-edit" onclick="editTip(${index})">Edit</button>
-              <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})">Delete</button>
-              <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
+              <button type="button" id="button-new-tip-edit" onclick="editTip(${index})"><i class="fa-solid fa-pencil"></i></button>
+              <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})"><i class="fa-solid fa-trash-can"></i></button>
+              <a href="${tip.video}" target="_blank" id="button-new-tip-video"><i class="fa-solid fa-video"></i></a>
             </div>        
         </div>        
         `;
@@ -114,7 +114,7 @@ function buttonDeleteTip(index) {
   const tips = JSON.parse(localStorage.getItem("Tips"));
   tips.forEach((tip, indexItem) => {
     if (indexItem == index) {
-      window.alert("Deseja realmente deletar a dica?")
+      window.confirm("Deseja realmente deletar a dica?")
       tips.splice(index, 1);
     }
   });
@@ -230,15 +230,15 @@ function searchTip() {
       showTips.innerHTML = `
       <div class="new-tip">
           <div id="content-tip">
-          <h3>Título: ${tip.title}</h3>
+          <h3 class="tip-title> ${tip.title}</h3>
               <p><strong>Linguagem|Skill:</strong> ${tip.language}</p>
               <p><strong>Categoria:</strong> ${tip.category}</p>
               <p><strong>Descrição:</strong> ${tip.description}</p>
           </div>
           <div id="button-new-tips">
-              <button id="button-new-tip-edit">Edit</button>
-              <button id="button-new-tip-delete">Delete</button>
-              <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
+          <button type="button" id="button-new-tip-edit" onclick="editTip(${index})"><i class="fa-solid fa-pencil"></i></button>
+          <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})"><i class="fa-solid fa-trash-can"></i></button>
+          <a href="${tip.video}" target="_blank" id="button-new-tip-video"><i class="fa-solid fa-video"></i></a>
           </div>        
       </div>        
       `;
