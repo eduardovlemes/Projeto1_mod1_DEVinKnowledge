@@ -92,7 +92,7 @@ function showTips() {
                 <p><strong>Descrição:</strong> ${tip.description}</p>
             </div>
             <div id="button-new-tips">
-                <button type="button" id="button-new-tip-edit" onclick="buttonEditTip(${index})">Edit</button>
+                <button type="button" id="button-new-tip-edit" onclick="editTip(${index})">Edit</button>
                 <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})">Delete</button>
                 <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
             </div>        
@@ -121,7 +121,7 @@ function buttonDeleteTip(index) {
   stats();
 }
 
-function buttonEditTip(index) {
+function editTip(index) {
   const tips = JSON.parse(localStorage.getItem("Tips"));
   tips.forEach((tip, indexItem) => {
     if (indexItem == index) {
@@ -145,14 +145,13 @@ function buttonChangeValue(index) {
       var confirm = window.confirm("Deseja editar?");
     }
 
-    /* pegar valores input */
     const title = document.getElementById("input-title").value;
     const language = document.getElementById("input-language").value;
     const category = document.getElementById("select-category").value;
     const description = document.getElementById("input-description").value;
     const video = document.getElementById("input-video").value;
 
-    /* atualizar valores card */
+    /* Atualiza os dados inseridos */
     if (indexItem == index && confirm == true) {
       tip.title = title;
       tip.language = language;
@@ -167,14 +166,14 @@ function buttonChangeValue(index) {
       window.alert("Edições canceladas");
     }
 
-    /* Limpando inputs */
+    /* Limpa os inputs */
     document.getElementById("input-title").value = "";
     document.getElementById("input-language").value = "";
     document.getElementById("select-category").value = "";
     document.getElementById("input-description").value = "";
     document.getElementById("input-video").value = "";
 
-    /* voltar botoes */
+    /* Reestabelece botões */
     const buttonForm = document.getElementById("button-form");
     buttonForm.innerHTML = "";
     buttonForm.innerHTML = `
