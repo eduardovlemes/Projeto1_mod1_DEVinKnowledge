@@ -1,7 +1,7 @@
 const initialValues = [
   {
     title: "Grid vs Flex-Box",
-    language: "CSS",
+    language: "CSS3",
     category: "FrontEnd",
     description:
       "A diferença crucial entre flexbox e grid, tirando o fato do primeiro ser unidirecional e o outro bi-direcional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos.",
@@ -29,10 +29,9 @@ function loadTipsInitial() {
   localStorage.setItem("Tips", JSON.stringify(initialValues));
 }
 
-function loadTips(){
-  localStorage.setItem("Tips", JSON.stringify(tips))
+function loadTips() {
+  localStorage.setItem("Tips", JSON.stringify(tips));
 }
-
 
 function saveTips(event) {
   event.preventDefault();
@@ -44,13 +43,11 @@ function saveTips(event) {
     );
   }
   const languageInput = document.getElementById("input-language").value;
-
   if (languageInput.length < 4 || languageInput.length > 16) {
     return alert(
       "Linguagem/Skill inválido! \n (Obs.: o campo Linguagem/Skill deve ter entre 4 e 16 caracteres)."
     );
   }
-
   const selectIndex = document.getElementById("select-category").selectedIndex;
   const selectedCategory =
     document.getElementsByTagName("option")[selectIndex].value;
@@ -61,7 +58,6 @@ function saveTips(event) {
       "Descrição inválido! \n (Obs.: o campo Descrição deve ter entre 32 e 512 caracteres)."
     );
   }
-
   const videoInput = document.getElementById("input-video").value;
   /* const validatesVideo = new RegExp("^((http(s?)://(www.)?[a-z]+.com/)|(magnet:?xt=urn:btih:))")
     if (validatesVideo.test(videoInput)) {
@@ -77,15 +73,12 @@ function saveTips(event) {
   };
 
   tips = JSON.parse(localStorage.getItem("Tips"));
-
   tips.push(dataFromInputs);
-
-  localStorage.setItem("Tips", JSON.stringify(tips))
+  localStorage.setItem("Tips", JSON.stringify(tips));
 }
 
 function showTips() {
   const tips = JSON.parse(localStorage.getItem("Tips"));
-
   const showTips = document.getElementById("show-tips");
   showTips.innerHTML = "";
 
@@ -99,8 +92,8 @@ function showTips() {
                 <p><strong>Descrição:</strong> ${tip.description}</p>
             </div>
             <div id="button-new-tips">
-                <button id="button-new-tip-edit">Edit</button>
-                <button id="button-new-tip-delete" onclick="buttonDeleteTip()">Delete</button>
+                <button type="button" id="button-new-tip-edit" onclick="buttonEditTip(${index})">Edit</button>
+                <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})">Delete</button>
                 <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
             </div>        
         </div>        
@@ -111,65 +104,127 @@ function showTips() {
 }
 
 function cleanForm(event) {
-  event.preventDefault()
-  const form = document.getElementById("container-form") 
-  form.reset()
+  event.preventDefault();
+  const form = document.getElementById("container-form");
+  form.reset();
 }
 
-function buttonDeleteTip (index){
-    const tips = JSON.parse(localStorage.getItem("Tips"))
-    tips.forEach((tip, indexItem) => {
-        if (indexItem == index) {
-            tip.splice (index, 1)
-        }
-    })
-    localStorage.setItem("Tips", JSON.stringify(tips))
-    showTips()
+function buttonDeleteTip(index) {
+  const tips = JSON.parse(localStorage.getItem("Tips"));
+  tips.forEach((tip, indexItem) => {
+    if (indexItem == index) {
+      tips.splice(index, 1);
+    }
+  });
+  localStorage.setItem("Tips", JSON.stringify(tips));
+  showTips();
+  stats();
 }
 
+function buttonEditTip(index) {
+  const tips = JSON.parse(localStorage.getItem("Tips"));
+  tips.forEach((tip, indexItem) => {
+    if (indexItem == index) {
+      document.getElementById("input-title").value = `${tip.title}`;
+      document.getElementById("input-language").value = `${tip.language}`;
+      document.getElementById("select-category").value = `${tip.category}`;
+      document.getElementById("input-description").value = `${tip.description}`;
+      document.getElementById("input-video").value = `${tip.video}`;
+    }
+  });
+  const buttonForm = document.getElementById("button-form");
+  buttonForm.innerHTML = "";
+  buttonForm.innerHTML = `
+  <button type="button" id="button-tip-change" onclick="buttonChangeValue(${index})">Editar Dica</button>`;
+}
 
-function stats () {
-  const statsTotal = document.getElementById("number-stats-total")
-  const statsFrontend = document.getElementById("number-stats-frontend")
-  const statsBackend = document.getElementById("number-stats-backend")
-  const statsFullstack = document.getElementById("number-stats-fullstack")
-  const statsSoftskill = document.getElementById("number-stats-softskill")
+function buttonChangeValue(index) {
+  const tips = JSON.parse(localStorage.getItem("Tips"));
+  tips.forEach((tip, indexItem) => {
+    if (indexItem == index) {
+      var confirm = window.confirm("Deseja editar?");
+    }
 
-  let finalStatsTotal = 0
-  let finalStatsFrontend = 0
-  let finalStatsBackend = 0
-  let finalStatsFullstack = 0
-  let finalStatsSoftskil = 0
+    /* pegar valores input */
+    const title = document.getElementById("input-title").value;
+    const language = document.getElementById("input-language").value;
+    const category = document.getElementById("select-category").value;
+    const description = document.getElementById("input-description").value;
+    const video = document.getElementById("input-video").value;
 
-  const tips = JSON.parse(localStorage.getItem("Tips"))
+    /* atualizar valores card */
+    if (indexItem == index && confirm == true) {
+      tip.title = title;
+      tip.language = language;
+      tip.category = category;
+      tip.description = description;
+      tip.video = video;
+
+      localStorage.setItem("Tips", JSON.stringify(tips));
+      showTips();
+      stats();
+    } else if (indexItem == index && confirm == false) {
+      window.alert("Edições canceladas");
+    }
+
+    /* Limpando inputs */
+    document.getElementById("input-title").value = "";
+    document.getElementById("input-language").value = "";
+    document.getElementById("select-category").value = "";
+    document.getElementById("input-description").value = "";
+    document.getElementById("input-video").value = "";
+
+    /* voltar botoes */
+    const buttonForm = document.getElementById("button-form");
+    buttonForm.innerHTML = "";
+    buttonForm.innerHTML = `
+    <button id="button-clean" onclick="cleanForm(event)">Limpar</button>
+    <button type="submit" id="button-save" onclick="saveTips(event); showTips(); stats ()">Salvar</button>`;
+  });
+}
+
+function stats() {
+  const statsTotal = document.getElementById("number-stats-total");
+  const statsFrontend = document.getElementById("number-stats-frontend");
+  const statsBackend = document.getElementById("number-stats-backend");
+  const statsFullstack = document.getElementById("number-stats-fullstack");
+  const statsSoftskill = document.getElementById("number-stats-softskill");
+
+  let finalStatsTotal = 0;
+  let finalStatsFrontend = 0;
+  let finalStatsBackend = 0;
+  let finalStatsFullstack = 0;
+  let finalStatsSoftskil = 0;
+
+  const tips = JSON.parse(localStorage.getItem("Tips"));
   tips.map((tip) => {
     if (tip.category === "FrontEnd") {
-      finalStatsTotal ++
-      finalStatsFrontend ++      
+      finalStatsTotal++;
+      finalStatsFrontend++;
     } else if (tip.category === "BackEnd") {
-      finalStatsTotal ++
-      finalStatsBackend ++
+      finalStatsTotal++;
+      finalStatsBackend++;
     } else if (tip.category === "FullStack") {
-      finalStatsTotal ++
-      finalStatsFullstack ++
+      finalStatsTotal++;
+      finalStatsFullstack++;
     } else if (tip.category === "SoftSkill") {
-      finalStatsTotal ++
-      finalStatsSoftskil ++
+      finalStatsTotal++;
+      finalStatsSoftskil++;
     }
-  })
-  statsTotal.textContent = finalStatsTotal
-  statsFrontend.textContent = finalStatsFrontend
-  statsBackend.textContent = finalStatsBackend
-  statsFullstack.textContent = finalStatsFullstack
-  statsSoftskill.textContent = finalStatsSoftskil
+  });
+  statsTotal.textContent = finalStatsTotal;
+  statsFrontend.textContent = finalStatsFrontend;
+  statsBackend.textContent = finalStatsBackend;
+  statsFullstack.textContent = finalStatsFullstack;
+  statsSoftskill.textContent = finalStatsSoftskil;
 }
 
-function searchTip () {
-  const searchSpace = document.getElementById("input-search")
-  const searchAdjustment = searchSpace.value.toLowerCase()
-  const tips = JSON.parse(localStorage.getItem("Tips"))
+function searchTip() {
+  const searchSpace = document.getElementById("input-search");
+  const searchAdjustment = searchSpace.value.toLowerCase();
+  const tips = JSON.parse(localStorage.getItem("Tips"));
   const showTips = document.getElementById("show-tips");
-  showTips.innerHTML = "";  
+  showTips.innerHTML = "";
 
   tips.forEach((tip, index) => {
     if (tips[index].title.toLowerCase().includes(searchAdjustment)) {
@@ -187,14 +242,11 @@ function searchTip () {
               <a href="${tip.video}" target="_blank" id="button-new-tip-video">Video</a>
           </div>        
       </div>        
-      `
+      `;
     }
-  })
+  });
 }
 
-function cleanSearch (){
-  document.getElementById("input-search").value = ""
+function cleanSearch() {
+  document.getElementById("input-search").value = "";
 }
-
-
-
