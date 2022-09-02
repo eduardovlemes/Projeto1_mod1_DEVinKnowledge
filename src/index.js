@@ -75,7 +75,7 @@ function saveTips(event) {
   tips = JSON.parse(localStorage.getItem("Tips"));
   tips.push(dataFromInputs);
   localStorage.setItem("Tips", JSON.stringify(tips));
-  window.alert ("Dica salva com sucesso!")
+  window.alert("Dica salva com sucesso!");
 }
 
 function showTips() {
@@ -114,7 +114,7 @@ function buttonDeleteTip(index) {
   const tips = JSON.parse(localStorage.getItem("Tips"));
   tips.forEach((tip, indexItem) => {
     if (indexItem == index) {
-      window.confirm("Deseja realmente deletar a dica?")
+      window.confirm("Deseja realmente deletar a dica?");
       tips.splice(index, 1);
     }
   });
@@ -230,15 +230,15 @@ function searchTip() {
       showTips.innerHTML = `
       <div class="new-tip">
           <div id="content-tip">
-          <h3 class="tip-title> ${tip.title}</h3>
-              <p><strong>Linguagem|Skill:</strong> ${tip.language}</p>
-              <p><strong>Categoria:</strong> ${tip.category}</p>
-              <p><strong>Descrição:</strong> ${tip.description}</p>
+            <h3 class="tip-title">${tip.title}</h3>
+            <p><strong>Linguagem|Skill:</strong> ${tip.language}</p>
+            <p><strong>Categoria:</strong> ${tip.category}</p>
+            <p><strong>Descrição:</strong> ${tip.description}</p>
           </div>
           <div id="button-new-tips">
-          <button type="button" id="button-new-tip-edit" onclick="editTip(${index})"><i class="fa-solid fa-pencil"></i></button>
-          <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})"><i class="fa-solid fa-trash-can"></i></button>
-          <a href="${tip.video}" target="_blank" id="button-new-tip-video"><i class="fa-solid fa-video"></i></a>
+            <button type="button" id="button-new-tip-edit" onclick="editTip(${index})"><i class="fa-solid fa-pencil"></i></button>
+            <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})"><i class="fa-solid fa-trash-can"></i></button>
+            <a href="${tip.video}" target="_blank" id="button-new-tip-video"><i class="fa-solid fa-video"></i></a>
           </div>        
       </div>        
       `;
