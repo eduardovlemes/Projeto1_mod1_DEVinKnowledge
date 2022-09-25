@@ -94,8 +94,8 @@ function showTips() {
             </div>
             <div id="button-new-tips">
               <button type="button" id="button-new-tip-edit" onclick="editTip(${index})"><i class="fa-solid fa-pencil"></i></button>
-              <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})"><i class="fa-solid fa-trash-can"></i></button>
               <a href="${tip.video}" target="_blank" id="button-new-tip-video"><i class="fa-solid fa-video"></i></a>
+              <button type="button" id="button-new-tip-delete" onclick="buttonDeleteTip(${index})"><i class="fa-solid fa-trash-can"></i></button>
             </div>        
         </div>        
         `;
