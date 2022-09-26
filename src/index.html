@@ -7,24 +7,40 @@
     <title>DEVinKnowledge</title>
     <script src="./index.js" defer></script>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./fontaewsome/css/all.css">
-    <link rel="shortcut icon" href="../public/favicon.png" type="png">
-    
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./fontaewsome/css/all.css" />
+    <link rel="shortcut icon" href="../public/favicon.png" type="png" />
   </head>
   <body onload="loadTipsInitial(); showTips(); stats ()">
     <main>
       <form id="container-form">
-            <img src="./assets/logo0.png" alt="logo">
+        <img src="./assets/logo0.png" alt="logo" />
 
         <label class="label-form">Título</label>
-            <input required id="input-title" class="input-form"type="text" placeholder="Digite um título">
+        <input
+          required
+          id="input-title"
+          class="input-form"
+          type="text"
+          placeholder="Digite um título"
+        />
 
         <label class="label-form">Linguagem | Skill</label>
-            <input required id="input-language" class="input-form"type="text" placeholder="Digite uma linguagem ou skill">
+        <input
+          required
+          id="input-language"
+          class="input-form"
+          type="text"
+          placeholder="Digite uma linguagem ou skill"
+        />
 
         <label class="label-form">Categoria</label>
-            <select required name="select-category" id="select-category" class="input-form">
+        <select
+          required
+          name="select-category"
+          id="select-category"
+          class="input-form"
+        >
           <option value="" disabled selected>Selecione uma categoria</option>
           <option value="FrontEnd">FrontEnd</option>
           <option value="BackEnd">BackEnd</option>
@@ -33,14 +49,28 @@
         </select>
 
         <label class="label-form">Descrição</label>
-            <textarea class="input-form" id="input-description" rows="5" required placeholder="Escreva aqui o detalhamento da sua dica."></textarea>
+        <textarea
+          class="input-form"
+          id="input-description"
+          rows="5"
+          required
+          placeholder="Escreva aqui o detalhamento da sua dica."
+        ></textarea>
 
         <label class="label-form">Vídeo</label>
-            <input required id="input-video" class="input-form" type="url" placeholder="https>//www.youtube.com/">
+        <input
+          required
+          id="input-video"
+          class="input-form"
+          type="url"
+          placeholder="https>//www.youtube.com/"
+        />
 
         <div id="button-form">
           <button id="button-clean" onclick="cleanForm(event)">Limpar</button>
-                <button type="submit" id="button-save" onclick="saveTips(event); showTips(); stats (); cleanForm(event)">Salvar</button>
+          <button type="submit" id="button-save" onclick="saveTips(event)">
+            Salvar
+          </button>
         </div>
       </form>
 
@@ -69,17 +99,23 @@
         </div>
 
         <div id="search-space">
-                <input type="text" id="input-search" placeholder="Digite um título para buscar...">
-                <button id="button-search" onclick="searchTip()"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button id="button-delete" onclick="cleanSearch(); showTips()"><i class="fa-solid fa-xmark"></i></button>
+          <input
+            type="text"
+            id="input-search"
+            placeholder="Digite um título para buscar..."
+          />
+          <button id="button-search" onclick="searchTip()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button id="button-delete" onclick="cleanSearch(); showTips()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
 
         <div id="show-tips"></div>
-
       </div>
 
       <div class="img-background"></div>
     </main>
   </body>
-
 </html>

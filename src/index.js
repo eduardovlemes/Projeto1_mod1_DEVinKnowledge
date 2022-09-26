@@ -4,7 +4,7 @@ const initialValues = [
     language: "CSS3",
     category: "FrontEnd",
     description:
-      "A diferença crucial entre flexbox e grid, tirando o fato do primeiro ser unidirecional e o outro bi-direcional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos.",
+      "A diferença crucial entre flexbox e grid, além do fato do primeiro ser unidirecional e o outro bidirecional, é que o controle do layout no grid vem do container e no flexbox vem dos elementos.",
     video: "https://www.youtube.com/watch?v=x-4z_u8LcGc",
   },
   {
@@ -20,7 +20,7 @@ const initialValues = [
     language: "Profissional",
     category: "SoftSkill",
     description:
-      "1- Se ofereça para ajudar em coisas que você não sabe. Certamente não saberá resolver de cara, mas vai buscar entender qual é o problema e como podemos resolvê-lo. 2-Fale o que você está fazendo. Não espere acabar o prazo para informar ao chefe que estava tavado em um ponto. 3-Escreva um Blog. Colocar as coisa no papel, ou em um documento, ajuda na organização das ideias e também a criar uma linha de raciocínio rápida para a resolução de um problema. 4- Reserve um intervalo para tarefas importantes. Não se trata de trabalho em si, mas coisas que irão te ajudar no trabalho, como ler um livro, se exercitar e oxigenar melhor o cérebro e etc. 5 - Quando você travar, faça uma pausa. Ficar parado no mesmo ponto do código não vai te ajudar a resolver o problema. As vezes é importante dar uma olhada em outra coisa para assim ter um insight para o problema original.",
+      "1) Se ofereça para ajudar em coisas que não saiba, assim poderás entender o problema e como resolvê-lo; 2) Informe sempre. Não espere acabar o prazo para dizer que estava travado; 3) Escreva. Colocar as coisas no papel ajuda a organizar as idéias e criar uma linha de raciocínio para a resolução do problema; 4) Reserve um intervalo para tarefas que irão te ajudar no trabalho (ler, exercícios, etc); 5) Quando você travar, faça uma pausa. Ficar parado no mesmo ponto não vai te ajudar a resolver o problema.",
     video: "https://www.youtube.com/watch?v=PGxTuv6k0KI",
   },
 ];
@@ -76,6 +76,10 @@ function saveTips(event) {
   tips.push(dataFromInputs);
   localStorage.setItem("Tips", JSON.stringify(tips));
   window.alert("Dica salva com sucesso!");
+  loadTips();
+  showTips();
+  stats();
+  cleanForm();
 }
 
 function showTips() {
