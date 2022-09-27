@@ -16,7 +16,7 @@ const initialValues = [
     video: "https://www.youtube.com/watch?v=H5L-CfmklKc",
   },
   {
-    title: "5 Habitos Que Todo DEV Deveria Ter",
+    title: "5 Hábitos Que Todo DEV Deveria Ter",
     language: "Profissional",
     category: "SoftSkill",
     description:
@@ -79,7 +79,12 @@ function saveTips(event) {
   loadTips();
   showTips();
   stats();
-  cleanForm();
+
+  document.getElementById("input-title").value = "";
+  document.getElementById("input-language").value = "";
+  document.getElementById("select-category").value = "";
+  document.getElementById("input-description").value = "";
+  document.getElementById("input-video").value = "";
 }
 
 function showTips() {
