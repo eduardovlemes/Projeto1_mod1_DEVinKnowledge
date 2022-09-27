@@ -1,6 +1,6 @@
 const initialValues = [
   {
-    title: "Grid vs Flex-Box",
+    title: "Grid vs Flexbox",
     language: "CSS3",
     category: "FrontEnd",
     description:
